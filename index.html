@@ -179,7 +179,69 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
 .eq-hd span{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
 .eq-hd span.r{text-align:right}
 
-/* ─── TRAVEL ─────────────────────────────────────────── */
+/* ─── RECURRING BANNER ───────────────────────────────── */
+.recurring-banner{
+  background: linear-gradient(100deg, #0f2318 0%, #1E3A2F 60%, #2a4a3a 100%);
+  border-radius: 7px;
+  padding: 13px 15px;
+  border: 1px solid rgba(196,136,43,.35);
+  position: relative;
+  overflow: hidden;
+}
+.recurring-banner::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:18px 18px;
+  pointer-events:none;
+}
+.recurring-toggle{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  cursor:pointer;
+  position:relative;
+  z-index:1;
+}
+.recurring-toggle input[type="checkbox"]{display:none}
+.recurring-check{
+  width:20px;height:20px;
+  border-radius:5px;
+  border:2px solid rgba(196,136,43,.6);
+  background:rgba(255,255,255,.07);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  margin-top:1px;
+  transition:all .2s;
+}
+.recurring-check svg{opacity:0;transition:opacity .15s}
+.recurring-toggle input:checked ~ .recurring-check{
+  background:var(--gold);
+  border-color:var(--gold);
+}
+.recurring-toggle input:checked ~ .recurring-check svg{opacity:1}
+.recurring-text{display:flex;flex-direction:column;gap:3px}
+.recurring-title{
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  display:flex;align-items:center;gap:7px;
+}
+.recurring-badge{
+  background:var(--gold);
+  color:#fff;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.5px;
+  padding:2px 7px;
+  border-radius:20px;
+}
+.recurring-sub{
+  color:rgba(255,255,255,.55);
+  font-size:11px;
+  line-height:1.5;
+}
 .travel-note{font-size:11px;color:var(--muted);background:var(--cream);padding:7px 10px;border-radius:5px;margin-top:8px;border-left:3px solid var(--border)}
 
 /* ─── TOGGLE ─────────────────────────────────────────── */
@@ -425,6 +487,20 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
             <label>Scope / Description</label>
             <textarea id="svcDesc" placeholder="Describe the work to be performed…"></textarea>
           </div>
+          <div class="recurring-banner mt">
+            <label class="recurring-toggle">
+              <input type="checkbox" id="recurringToggle" onchange="calcAll()">
+              <div class="recurring-check">
+                <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="recurring-text">
+                <span class="recurring-title">Recurring Service Agreement &nbsp;<span class="recurring-badge">10% OFF</span></span>
+                <span class="recurring-sub">Pre-scheduled repeat visits (weekly, bi-weekly, monthly, seasonal) receive a 10% discount off the total quote.</span>
+              </div>
+            </label>
+          </div>
+
+          </div>
         </div>
       </div>
 
@@ -594,6 +670,7 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif}
             <div class="tot-row"><span class="lbl">Travel</span><span class="amt" id="s-travel">$0.00</span></div>
             <div class="tot-row"><span class="lbl">Subtotal</span><span class="amt" id="s-sub">$0.00</span></div>
             <div class="tot-row disc" id="s-disc-row" style="display:none"><span class="lbl">Discount</span><span class="amt" id="s-disc">−$0.00</span></div>
+            <div class="tot-row disc" id="s-recurring-row" style="display:none"><span class="lbl">Recurring Service (10%)</span><span class="amt" id="s-recurring">−$0.00</span></div>
             <div class="tot-row tax" id="s-tax-row" style="display:none"><span class="lbl">Materials Tax</span><span class="amt" id="s-tax">$0.00</span></div>
             <div class="tot-grand">
               <span class="lbl">TOTAL</span>
@@ -804,12 +881,17 @@ function calcAll(){
   // Subtotal
   const sub = labor + matTotal + equipTotal + travel;
 
-  // Discount
+  // Recurring service discount (10% off subtotal, applied before manual discount)
+  const recurringOn = document.getElementById('recurringToggle').checked;
+  const recurringDiscount = recurringOn ? sub * 0.10 : 0;
+
+  // Manual discount (applied after recurring)
   let discount = 0;
   if(document.getElementById('discToggle').checked){
     const dType = document.getElementById('discType').value;
     const dVal  = parseFloat(document.getElementById('discVal').value)||0;
-    discount = dType==='pct' ? sub*(dVal/100) : Math.min(dVal, sub);
+    const subAfterRecurring = sub - recurringDiscount;
+    discount = dType==='pct' ? subAfterRecurring*(dVal/100) : Math.min(dVal, subAfterRecurring);
   }
 
   // Tax on materials only
@@ -821,7 +903,7 @@ function calcAll(){
   }
 
   // Grand total
-  const grand = sub - discount + tax;
+  const grand = sub - recurringDiscount - discount + tax;
 
   // Update sidebar
   document.getElementById('s-labor').textContent  = fmt(labor);
@@ -830,6 +912,12 @@ function calcAll(){
   document.getElementById('s-travel').textContent = fmt(travel);
   document.getElementById('s-sub').textContent    = fmt(sub);
   document.getElementById('s-total').textContent  = fmt(grand);
+
+  const recurringRow = document.getElementById('s-recurring-row');
+  if(recurringDiscount > 0){
+    recurringRow.style.display = 'flex';
+    document.getElementById('s-recurring').textContent = `−${fmt(recurringDiscount)}`;
+  } else { recurringRow.style.display = 'none'; }
 
   const discRow = document.getElementById('s-disc-row');
   const taxRow  = document.getElementById('s-tax-row');
@@ -907,19 +995,23 @@ function buildPrintView(){
 
   // Subtotal / discount / tax / total
   const sub = labor + matTotal + equipTotal + travel;
+  const recurringOn = document.getElementById('recurringToggle').checked;
+  const recurringDiscount = recurringOn ? sub * 0.10 : 0;
   let discount = 0;
   const discOn = document.getElementById('discToggle').checked;
   if(discOn){
     const dType = g('discType');
     const dVal  = parseFloat(g('discVal'))||0;
-    discount = dType==='pct' ? sub*(dVal/100) : Math.min(dVal, sub);
+    const subAfterRecurring = sub - recurringDiscount;
+    discount = dType==='pct' ? subAfterRecurring*(dVal/100) : Math.min(dVal, subAfterRecurring);
   }
   const taxOn = document.getElementById('taxToggle').checked;
   const taxRate = parseFloat(g('taxRate'))||0;
   const tax = taxOn ? matTotal*(taxRate/100) : 0;
-  const grand = sub - discount + tax;
+  const grand = sub - recurringDiscount - discount + tax;
 
   // Discount/tax rows for totals
+  const recurringHTML = recurringDiscount>0 ? `<div class="pv-tot-row disc"><span>Recurring Service Agreement (10%)</span><span class="val">−${fmt(recurringDiscount)}</span></div>` : '';
   const discHTML = discount>0 ? `<div class="pv-tot-row disc"><span>Discount</span><span class="val">−${fmt(discount)}</span></div>` : '';
   const taxHTML  = tax>0 ? `<div class="pv-tot-row tax-r"><span>Materials Tax (${taxRate}%)</span><span class="val">${fmt(tax)}</span></div>` : '';
 
@@ -1033,7 +1125,7 @@ function buildPrintView(){
       ${equipTotal>0?`<div class="pv-tot-row"><span>Equipment</span><span class="val">${fmt(equipTotal)}</span></div>`:''}
       ${travel>0?`<div class="pv-tot-row"><span>Travel</span><span class="val">${fmt(travel)}</span></div>`:''}
       <div class="pv-tot-row"><span>Subtotal</span><span class="val">${fmt(sub)}</span></div>
-      ${discHTML}${taxHTML}
+      ${recurringHTML}${discHTML}${taxHTML}
       <div class="pv-tot-grand"><span>TOTAL</span><span class="val">${fmt(grand)}</span></div>
     </div>
   </div>
@@ -1078,8 +1170,9 @@ function clearForm(){
   document.getElementById('laborRate').value    = 35;
   document.getElementById('travelMiles').value  = 0;
   document.getElementById('travelRate').value   = 0.70;
-  document.getElementById('discToggle').checked = false;
-  document.getElementById('taxToggle').checked  = false;
+  document.getElementById('discToggle').checked    = false;
+  document.getElementById('recurringToggle').checked = false;
+  document.getElementById('taxToggle').checked     = false;
   toggleDiscount(); toggleTax();
   document.getElementById('matBody').innerHTML = '';
   matId = 0; addMatRow();
