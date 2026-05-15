@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent a Grandson — Colorado Springs Market Research</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap');
+
+  :root {
+    --forest:   #1E3A2F;
+    --midgreen: #2D5A3F;
+    --ltgreen:  #EBF2EE;
+    --gold:     #C4882B;
+    --ltgold:   #F7ECD9;
+    --cream:    #F7F4EF;
+    --border:   #E0D8CC;
+    --muted:    #6B6560;
+    --white:    #FFFFFF;
+    --text:     #1A1A18;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  .report-header {
+    background: var(--forest);
+    color: var(--white);
+    padding: 48px 0 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(255,255,255,0.015) 30px,
+      rgba(255,255,255,0.015) 60px
+    );
+  }
+  .header-logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    margin: 0 auto 20px;
+    display: block;
+    background: var(--white);
+    padding: 4px;
+    object-fit: contain;
+  }
+  .report-header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .report-header h1 span { color: var(--gold); }
+  .report-subtitle {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+  }
+  .report-meta {
+    display: inline-flex;
+    gap: 24px;
+    margin-top: 24px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 12px 28px;
+  }
+  .report-meta span {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .report-meta strong {
+    color: var(--gold);
+    display: block;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ─── NAV TABS ────────────────────────────────────────── */
+  .nav-bar {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    overflow-x: auto;
+  }
+  .nav-bar a {
+    padding: 14px 22px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+  .nav-bar a:hover { color: var(--forest); border-color: var(--gold); }
+
+  /* ─── LAYOUT ──────────────────────────────────────────── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--forest);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin: 28px 0 10px;
+  }
+  p { margin-bottom: 14px; color: #2E2E2A; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── STAT CARDS ──────────────────────────────────────── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+  .stat-card .stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1;
+  }
+  .stat-card .stat-val.gold { color: var(--gold); }
+  .stat-card .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .stat-card .stat-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ─── PRICING TABLE ───────────────────────────────────── */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .price-table thead {
+    background: var(--forest);
+    color: var(--white);
+  }
+  .price-table thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .price-table tbody tr { border-bottom: 1px solid var(--border); }
+  .price-table tbody tr:last-child { border-bottom: none; }
+  .price-table tbody tr:nth-child(even) { background: var(--cream); }
+  .price-table td { padding: 12px 16px; }
+  .price-table td:first-child { font-weight: 600; color: var(--forest); }
+  .price-range { color: var(--midgreen); font-weight: 700; }
+  .price-anchor { color: var(--gold); font-weight: 700; }
+
+  /* ─── CALLOUT BOX ─────────────────────────────────────── */
+  .callout {
+    background: var(--ltgold);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .callout strong { color: var(--forest); }
+  .callout p { color: #3A3028; }
+
+  .callout-green {
+    background: var(--ltgreen);
+    border-left: 4px solid var(--midgreen);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .callout-green strong { color: var(--forest); }
+
+  /* ─── COMPETITOR GRID ────────────────────────────────── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .comp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .comp-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .comp-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 6px; }
+  .comp-tag {
+    display: inline-block;
+    background: var(--ltgreen);
+    color: var(--midgreen);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-top: 6px;
+  }
+  .comp-tag.gold {
+    background: var(--ltgold);
+    color: var(--gold);
+  }
+
+  /* ─── STRATEGY STEPS ─────────────────────────────────── */
+  .strategy-steps {
+    counter-reset: step;
+    margin: 24px 0;
+  }
+  .step {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .step-num {
+    counter-increment: step;
+    min-width: 42px;
+    height: 42px;
+    background: var(--forest);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .step-body h4 {
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .step-body p { font-size: 0.9rem; color: #3A3028; margin-bottom: 0; }
+
+  /* ─── PHASE TIMELINE ─────────────────────────────────── */
+  .timeline {
+    margin: 28px 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-left: 52px;
+    position: relative;
+  }
+  .tl-dot {
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    width: 22px;
+    height: 22px;
+    background: var(--gold);
+    border: 3px solid var(--cream);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .tl-phase {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .tl-title {
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .tl-body { font-size: 0.9rem; color: #3A3028; }
+
+  /* ─── OPPORTUNITY BOX ───────────────────────────────── */
+  .opportunity-banner {
+    background: var(--forest);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity-banner::before {
+    content: '"';
+    position: absolute;
+    right: 20px;
+    top: -10px;
+    font-size: 120px;
+    color: rgba(255,255,255,0.05);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .opportunity-banner h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .opportunity-banner p { color: rgba(255,255,255,0.85); margin-bottom: 0; }
+
+  /* ─── FOOTER ─────────────────────────────────────────── */
+  .report-footer {
+    background: var(--forest);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.8rem;
+    margin-top: 40px;
+  }
+  .report-footer strong { color: var(--gold); }
+
+  /* ─── PILLS ──────────────────────────────────────────── */
+  .pill {
+    display: inline-block;
+    background: var(--ltgreen);
+    color: var(--midgreen);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 3px 3px 3px 0;
+  }
+  .pill.gold { background: var(--ltgold); color: var(--gold); }
+  .pill.dark { background: var(--forest); color: var(--white); }
+
+  ul.checklist { list-style: none; padding: 0; margin: 12px 0; }
+  ul.checklist li {
+    padding: 5px 0 5px 26px;
+    position: relative;
+    font-size: 0.92rem;
+    color: #2E2E2A;
+  }
+  ul.checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--midgreen);
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .report-header h1 { font-size: 1.8rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    h2 { font-size: 1.5rem; }
+    .report-meta { flex-direction: column; gap: 12px; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <img src="https://raw.githubusercontent.com/JustinTrolle/Rent-A-Grandson-/691baa82bea156e98a605dd074d1c623172bc10d/Rent%20a%20Grandson%20-%20Logo.png"
+       alt="Rent a Grandson Logo" class="header-logo"
+       onerror="this.style.display='none'">
+  <h1>Rent a Grandson<br><span>Market Research Report</span></h1>
+  <div class="report-subtitle">Lawn &amp; Landscaping — Colorado Springs, CO</div>
+  <div class="report-meta">
+    <div><span>Prepared</span><strong>May 2026</strong></div>
+    <div><span>Market</span><strong>Colorado Springs Metro</strong></div>
+    <div><span>Focus</span><strong>Residential Landscaping</strong></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="#market-size">Market Size</a>
+  <a href="#local">Local Market</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#competition">Competition</a>
+  <a href="#opportunity">Opportunity</a>
+  <a href="#marketing">Marketing</a>
+  <a href="#roadmap">Roadmap</a>
+</nav>
+
+<!-- SECTION 1: MARKET SIZE -->
+<section id="market-size">
+<div class="container">
+  <div class="section-label">Section 01</div>
+  <h2>National Market Size &amp; Growth</h2>
+
+  <p>The U.S. landscaping and lawn care industry is one of the most consistently growing sectors in home services. The numbers vary by what's counted (lawn-only vs. full landscaping services), but every major data source points the same direction: big, fragmented, and still growing.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-val gold">$167B</div>
+      <div class="stat-label">Industry Size (2024)</div>
+      <div class="stat-note">IBISWorld estimate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">6.4%</div>
+      <div class="stat-label">3-Year CAGR</div>
+      <div class="stat-note">Consistent annual growth</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">600K+</div>
+      <div class="stat-label">US Businesses</div>
+      <div class="stat-note">Highly fragmented market</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">1.2M+</div>
+      <div class="stat-label">US Workers</div>
+      <div class="stat-note">3rd largest in its category</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">8.6%</div>
+      <div class="stat-label">Top 5 Co. Market Share</div>
+      <div class="stat-note">Rest = small operators</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">61%</div>
+      <div class="stat-label">Residential Share</div>
+      <div class="stat-note">Homeowners drive demand</div>
+    </div>
+  </div>
+
+  <p>The most important takeaway for a startup like Rent a Grandson: <strong>the top five national companies combined hold less than 9% of the market.</strong> That means 91%+ belongs to regional and local operators. This is a deeply local business where trust, consistency, and neighborhood reputation win — not brand recognition or national ad budgets.</p>
+
+  <div class="callout">
+    <p><strong>Key Trend:</strong> Subscription and recurring maintenance contracts now account for over 75% of new residential bookings for leading providers. Locking in seasonal contracts early is the fastest path to stable, predictable revenue for a new business.</p>
+  </div>
+
+  <h3>Why the Industry Keeps Growing</h3>
+  <ul class="checklist">
+    <li>Continued suburban expansion and new home construction driving first-time landscaping needs</li>
+    <li>Homeowners treating outdoor spaces as lifestyle investments, not just maintenance</li>
+    <li>Aging population increasingly outsourcing physical yard work (prime Rent a Grandson territory)</li>
+    <li>Rising home values incentivizing curb appeal investment</li>
+    <li>Growing demand for water-efficient landscaping as drought concerns increase</li>
+    <li>Even in downturns, homeowners keep paying for small recurring services like mowing</li>
+  </ul>
+</div>
+</section>
+
+<!-- SECTION 2: LOCAL MARKET -->
+<section id="local">
+<div class="container">
+  <div class="section-label">Section 02</div>
+  <h2>The Colorado Springs Local Market</h2>
+
+  <p>Colorado Springs is one of the fastest-growing mid-sized cities in the country — and that growth is a direct tailwind for a new landscaping business. More new homes means more first-time landscaping clients. More established homeowners means more recurring maintenance demand.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-val gold">502K</div>
+      <div class="stat-label">City Population (2024)</div>
+      <div class="stat-note">Metro: ~701,000</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">69%</div>
+      <div class="stat-label">Population Growth (1992–2022)</div>
+      <div class="stat-note">One of CO's fastest growing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">$457K</div>
+      <div class="stat-label">Avg. Home Value</div>
+      <div class="stat-note">March 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">$106K</div>
+      <div class="stat-label">Median Homeowner Income</div>
+      <div class="stat-note">Key demographic stat</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">3,057</div>
+      <div class="stat-label">Homes For Sale (March 2026)</div>
+      <div class="stat-note">+16% YOY — active market</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">1,003K</div>
+      <div class="stat-label">Metro Projection by 2045</div>
+      <div class="stat-note">Long-term demand locked in</div>
+    </div>
+  </div>
+
+  <h3>The Colorado Springs Climate Challenge — and Opportunity</h3>
+  <p>Colorado Springs has a semi-arid climate with only 13–16 inches of annual precipitation, hot dry summers, unpredictable Front Range hailstorms, and winters that can swing from 60°F to blizzard in the same week. This creates a compressed working season of roughly <strong>March through November</strong> for most services.</p>
+
+  <p>This is both the market's biggest constraint and its biggest opportunity. Homeowners here genuinely need help more than in wetter climates — compact soil, dry conditions, and altitude create lawn care challenges most DIYers can't solve well. Professionals who understand local conditions command real loyalty.</p>
+
+  <div class="callout-green">
+    <p><strong>Water Efficiency = Growing Niche:</strong> Colorado Springs receives about 16 inches of annual precipitation. Colorado Springs Utilities offers a $1/sq ft rebate for qualifying xeriscape and drought-tolerant installations. Landscapers who position as water-efficiency specialists capture a segment their generalist competitors can't touch.</p>
+  </div>
+
+  <h3>Key Demand Drivers Specific to Colorado Springs</h3>
+  <ul class="checklist">
+    <li>Military community (Fort Carson, Peterson AFB, Schriever) creates high turnover of homeowners needing immediate landscaping help</li>
+    <li>Retirees in established neighborhoods (Broadmoor, Old North End, Briargate) seeking reliable, trustworthy help — the core Rent a Grandson demographic</li>
+    <li>New suburban development to the north and east (Banning Lewis Ranch, Lorson Ranch) = first-time landscaping clients</li>
+    <li>HOA communities with maintenance standards drive predictable recurring demand</li>
+    <li>Water restriction compliance is increasingly essential — professional installation and smart irrigation are growing categories</li>
+  </ul>
+</div>
+</section>
+
+<!-- SECTION 3: PRICING -->
+<section id="pricing">
+<div class="container">
+  <div class="section-label">Section 03</div>
+  <h2>Pricing Guide — Colorado Springs 2025–2026</h2>
+
+  <p>Colorado Springs pricing is competitive but not cheap. The short season (roughly 22–28 mowing visits per year) means per-visit rates run slightly higher than national averages to make up for fewer annual visits. Here's a comprehensive breakdown of what the market supports.</p>
+
+  <h3>Mowing &amp; Basic Maintenance — Per Visit</h3>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Property Size</th>
+        <th>Market Low</th>
+        <th>Market Mid</th>
+        <th>Market High</th>
+        <th>Anchor Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Small (&lt;1/8 acre)</td>
+        <td class="price-range">$27–$35</td>
+        <td class="price-range">$35–$42</td>
+        <td>$45–$55</td>
+        <td class="price-anchor">$39</td>
+      </tr>
+      <tr>
+        <td>1/4 acre (typical suburban)</td>
+        <td class="price-range">$39–$45</td>
+        <td class="price-range">$45–$55</td>
+        <td>$55–$65</td>
+        <td class="price-anchor">$50</td>
+      </tr>
+      <tr>
+        <td>1/2 acre</td>
+        <td class="price-range">$53–$60</td>
+        <td class="price-range">$60–$72</td>
+        <td>$72–$85</td>
+        <td class="price-anchor">$65</td>
+      </tr>
+      <tr>
+        <td>3/4 acre</td>
+        <td class="price-range">$68–$80</td>
+        <td class="price-range">$80–$90</td>
+        <td>$90–$105</td>
+        <td class="price-anchor">$82</td>
+      </tr>
+      <tr>
+        <td>1 acre</td>
+        <td class="price-range">$82–$95</td>
+        <td class="price-range">$95–$110</td>
+        <td>$110–$130</td>
+        <td class="price-anchor">$100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>A typical Colorado household with a 1/4-acre suburban lot spends <strong>$950–$1,500/year on mowing alone</strong> based on 22–28 visits at $42–$58/visit. The average statewide visit rate is $58.</p>
+
+  <h3>Seasonal &amp; Add-On Services — Per Job</h3>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Typical Range</th>
+        <th>Colorado Springs Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Aeration</td>
+        <td class="price-range">$57–$250</td>
+        <td>Size-dependent; high demand in compact CO soil</td>
+      </tr>
+      <tr>
+        <td>Fertilization (5-step program)</td>
+        <td class="price-range">$57–$600/season</td>
+        <td>Recurring revenue anchor</td>
+      </tr>
+      <tr>
+        <td>Pre-emergent / Weed Control</td>
+        <td class="price-range">$50–$210</td>
+        <td>$150–$400/season for full programs</td>
+      </tr>
+      <tr>
+        <td>Overseeding</td>
+        <td class="price-range">$63–$200+</td>
+        <td>High demand after aeration</td>
+      </tr>
+      <tr>
+        <td>Spring Cleanup</td>
+        <td class="price-range">$150–$305+</td>
+        <td>Major revenue opportunity in March–April</td>
+      </tr>
+      <tr>
+        <td>Fall Cleanup / Leaf Removal</td>
+        <td class="price-range">$200–$500</td>
+        <td>$360+ locally; strong demand Oct–Nov</td>
+      </tr>
+      <tr>
+        <td>Shrub/Hedge Trimming</td>
+        <td class="price-range">$60–$217+</td>
+        <td>Strong add-on upsell opportunity</td>
+      </tr>
+      <tr>
+        <td>Mulch / Rock Installation</td>
+        <td class="price-range">$200–$800+</td>
+        <td>Per yard + labor; good margin</td>
+      </tr>
+      <tr>
+        <td>Xeriscaping / Conversion</td>
+        <td class="price-range">$1,811–$5,884</td>
+        <td>CO Springs avg: $3,953; growing demand</td>
+      </tr>
+      <tr>
+        <td>Sod Installation (1/4 acre)</td>
+        <td class="price-range">$3,000–$8,000</td>
+        <td>High-ticket project work</td>
+      </tr>
+      <tr>
+        <td>Full Weekly Package (mow+trim+edge)</td>
+        <td class="price-range">$87–$140/visit</td>
+        <td>Premium full-service rates</td>
+      </tr>
+      <tr>
+        <td>Hourly Labor Rate</td>
+        <td class="price-range">$25–$70/hr</td>
+        <td>$50–$70 for skilled/specialty work</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>Annual Contract Math:</strong> A client paying $50/cut x 24 visits = $1,200 in mowing revenue alone. Add spring cleanup ($250), fall cleanup ($400), aeration ($120), fertilization ($300), and that single client is worth <strong>$2,270+/year</strong>. Build 40 recurring clients and you're looking at $90K+ in annual revenue from mowing and basic maintenance alone — before any landscaping project work.</p>
+  </div>
+
+  <h3>Pricing Strategy for a Startup</h3>
+  <p>Don't compete on price with budget operators. The Rent a Grandson brand is built on trust, reliability, and personalized service — position at <strong>mid-market to slightly above mid-market</strong> and justify it with quality and dependability. The target customer (older homeowners, busy families, HOA neighborhoods) is not buying the cheapest option. They're buying peace of mind.</p>
+  <ul class="checklist">
+    <li>Price mowing at or slightly above GreenPal/LawnStarter rates ($45–$55 for typical suburban lots)</li>
+    <li>Offer 10% early-season discount for clients who sign a full-season contract by March 1</li>
+    <li>Bundle services: mow + fertilization + spring/fall cleanup at package rate</li>
+    <li>Charge a one-time "new client cleanup" fee for overgrown or neglected properties</li>
+    <li>Bill monthly for recurring services — easier for clients and better for your cash flow</li>
+  </ul>
+</div>
+</section>
+
+<!-- SECTION 4: COMPETITION -->
+<section id="competition">
+<div class="container">
+  <div class="section-label">Section 04</div>
+  <h2>Competitive Landscape</h2>
+
+  <p>The competition in Colorado Springs is broad but fragmented. The low barrier to entry (a trailer, a mower, a pickup truck) means dozens of solo operators compete on price. But consistency and reliability are genuinely rare, which is exactly where Rent a Grandson has a positioning advantage.</p>
+
+  <h3>Key Competitors to Know</h3>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <h4>Incline Landscaping &amp; Lawn Maintenance</h4>
+      <p>Locally owned, Best of Colorado Springs 2025 nominee. Full-service including xeriscaping, hardscapes, patios, irrigation, retaining walls.</p>
+      <span class="comp-tag">Full Service</span>
+      <span class="comp-tag gold">Strong Brand</span>
+    </div>
+    <div class="comp-card">
+      <h4>BrightView Holdings</h4>
+      <p>National leader focused on commercial contracts, HOAs, corporate campuses. Less residential competition but dominates the commercial segment.</p>
+      <span class="comp-tag">Commercial</span>
+      <span class="comp-tag gold">National Player</span>
+    </div>
+    <div class="comp-card">
+      <h4>Bear Claw Landscaping</h4>
+      <p>People's Choice award winner. Known for premium landscape design, custom outdoor spaces, water features. Higher-end residential market.</p>
+      <span class="comp-tag">Design-Build</span>
+      <span class="comp-tag gold">Premium Tier</span>
+    </div>
+    <div class="comp-card">
+      <h4>TruGreen</h4>
+      <p>National chain with local presence. Focuses on lawn treatment programs (fertilization, weed control, aeration). Not a full-service mowing competitor.</p>
+      <span class="comp-tag">Treatment Programs</span>
+      <span class="comp-tag gold">National</span>
+    </div>
+    <div class="comp-card">
+      <h4>GreenPal / LawnStarter</h4>
+      <p>Digital marketplaces connecting homeowners with local operators. Drive the low end of pricing ($27–$49/cut). Commodity-focused, low loyalty.</p>
+      <span class="comp-tag">Platform</span>
+      <span class="comp-tag gold">Low Price</span>
+    </div>
+    <div class="comp-card">
+      <h4>Solo Operators (300+)</h4>
+      <p>Houzz lists 304 Colorado Springs landscapers. LawnStarter lists 25+. Most are single operators competing on price with inconsistent reliability.</p>
+      <span class="comp-tag">Budget</span>
+      <span class="comp-tag gold">High Churn</span>
+    </div>
+  </div>
+
+  <div class="callout-green">
+    <p><strong>The Real Competitive Gap:</strong> With 93% of Colorado Springs homeowners reading reviews before hiring, and with the market dominated by price-cutting solo ops and impersonal national chains, there is a clear lane for a dependable, relationship-focused service that targets the homeowners who want to trust the person in their yard. That's the Rent a Grandson story.</p>
+  </div>
+
+  <h3>Where Rent a Grandson Wins</h3>
+  <ul class="checklist">
+    <li><strong>Trust by brand story</strong> — the name alone communicates reliability, work ethic, and personal connection</li>
+    <li><strong>Target demographic alignment</strong> — older homeowners who grew up with the concept of a dependable young person doing yard work are the highest-value, most loyal clients</li>
+    <li><strong>Reliability premium</strong> — showing up every time, on schedule, is genuinely rare and commands above-market pricing</li>
+    <li><strong>Low overhead startup</strong> — lean structure allows competitive pricing on basic services while building reviews and referrals</li>
+    <li><strong>Room to grow</strong> — start with mowing and maintenance, add landscaping/hardscape as skills and equipment grow</li>
+  </ul>
+</div>
+</section>
+
+<!-- SECTION 5: OPPORTUNITY SIZING -->
+<section id="opportunity">
+<div class="container">
+  <div class="section-label">Section 05</div>
+  <h2>Opportunity Sizing — What's Realistic</h2>
+
+  <div class="opportunity-banner">
+    <h3>Year 1 Revenue Target: $40,000–$75,000</h3>
+    <p>Based on 25–40 recurring residential mowing clients at $50/cut × 24 visits/year, plus seasonal service add-ons. This is a realistic solo operator target with two people working the business part-time to full-time.</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-val gold">25</div>
+      <div class="stat-label">Clients for Break-Even</div>
+      <div class="stat-note">~$30K/yr in mowing alone</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">40</div>
+      <div class="stat-label">Clients for Solid Y1</div>
+      <div class="stat-note">~$50K base + add-ons</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val gold">$2,200+</div>
+      <div class="stat-label">Avg Client Annual Value</div>
+      <div class="stat-note">Mowing + seasonal services</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">$90K+</div>
+      <div class="stat-label">Year 2 Potential (50 clients)</div>
+      <div class="stat-note">Adding project work</div>
+    </div>
+  </div>
+
+  <h3>High-Value Service Mix to Target</h3>
+  <p>Don't just mow lawns. The most profitable operators layer high-margin add-ons onto a recurring maintenance base. Here's the smart service mix for Year 1–2 in Colorado Springs:</p>
+
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Service Category</th>
+        <th>Revenue Role</th>
+        <th>Margin Level</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Weekly/Biweekly Mowing</td>
+        <td>Recurring base revenue</td>
+        <td>Good</td>
+        <td class="price-anchor">Day 1</td>
+      </tr>
+      <tr>
+        <td>Spring &amp; Fall Cleanup</td>
+        <td>High-ticket seasonal surge</td>
+        <td>Excellent</td>
+        <td class="price-anchor">Day 1</td>
+      </tr>
+      <tr>
+        <td>Fertilization Programs</td>
+        <td>Recurring upsell, high retention</td>
+        <td>Very Good</td>
+        <td class="price-anchor">Year 1</td>
+      </tr>
+      <tr>
+        <td>Aeration + Overseeding</td>
+        <td>Seasonal high-margin pairing</td>
+        <td>Excellent</td>
+        <td class="price-anchor">Year 1</td>
+      </tr>
+      <tr>
+        <td>Shrub / Hedge Trimming</td>
+        <td>Quick add-on, easy upsell</td>
+        <td>Very Good</td>
+        <td class="price-anchor">Year 1</td>
+      </tr>
+      <tr>
+        <td>Mulch / Rock Refresh</td>
+        <td>High ticket, good margin</td>
+        <td>Excellent</td>
+        <td class="price-anchor">Year 1–2</td>
+      </tr>
+      <tr>
+        <td>Xeriscape Conversion</td>
+        <td>Big ticket ($2K–$6K) projects</td>
+        <td>Very Good</td>
+        <td class="price-anchor">Year 2+</td>
+      </tr>
+      <tr>
+        <td>Irrigation Install/Repair</td>
+        <td>Specialty, high demand locally</td>
+        <td>Excellent</td>
+        <td class="price-anchor">Year 2+</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- SECTION 6: MARKETING -->
+<section id="marketing">
+<div class="container">
+  <div class="section-label">Section 06</div>
+  <h2>Marketing Strategy</h2>
+
+  <p>A startup landscaping business in Colorado Springs doesn't need a massive ad budget. It needs a smart local presence, a handful of great reviews, and a brand story that earns word of mouth. Here's how to build the funnel.</p>
+
+  <h3>Phase 1 — Foundation (Before First Client)</h3>
+  <div class="strategy-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Google Business Profile — Do This First</h4>
+        <p>Set up and fully complete your Google Business Profile. This is the single highest-ROI free action you can take. The Google 3-pack captures 44–61% of all local search clicks. Add services, photos, hours, and service area. Request reviews after every job with a direct link. <strong>87% of consumers check reviews before contacting a local service.</strong></p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Simple Website with Clear Pricing</h4>
+        <p>A fast, mobile-optimized site with your services, approximate pricing, before/after photos, and an easy quote request form. Don't overthink it — one page done well beats five pages done poorly. Over 52% of service searches happen on mobile. Make sure it loads fast and the phone number is clickable.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Nextdoor + Neighborhood Facebook Groups</h4>
+        <p>These are where Colorado Springs homeowners find local services. Create a business page on Nextdoor. Join neighborhood Facebook groups for Briargate, Broadmoor, Banning Lewis Ranch, and other target neighborhoods. Introduce the business genuinely. Post before/after photos when you do good work.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>Direct Mail / Door Hangers — Targeted Neighborhoods</h4>
+        <p>Targeted direct mail achieves a 4.4% response rate. Door hangers in specific high-value subdivisions convert at 1–2% with a strong offer. Focus on established residential neighborhoods (older homes, mature trees, existing landscaping). A simple "First mow free when you sign a seasonal contract" offer moves clients quickly.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Phase 2 — Build Credibility (Months 1–6)</h3>
+  <div class="strategy-steps">
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>Review Generation System</h4>
+        <p>Businesses with 100+ Google reviews and a 4.8+ rating consistently outperform competitors with identical ad budgets and better prices. Text every client after a job: "We really appreciate your business — if you have 60 seconds, a Google review helps a ton." Link directly to your Google review page. Target 15–30 reviews in the first 3 months.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <h4>Instagram / TikTok Before &amp; After Content</h4>
+        <p>Visual content converts exceptionally well in Colorado Springs because the mountain backdrop makes even basic landscaping look great. Film short before/after videos — an overgrown lawn becoming clean, a spring cleanup, a mulch refresh. Post consistently. Hashtag #ColoradoSpringsLandscaping, #ColoradoSpringslawncare, #PikesPeakCountry. This builds trust faster than any ad.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <h4>Referral Program</h4>
+        <p>Referred customers are 18% less likely to churn and 16–25% more valuable over their lifetime. Offer a $25 account credit for every referral that signs a seasonal contract. Tell every satisfied client: "Our biggest growth is through referrals — if you know someone who needs reliable lawn care, we'd love the introduction."</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Phase 3 — Scale (Month 6+)</h3>
+  <div class="strategy-steps">
+    <div class="step">
+      <div class="step-num">8</div>
+      <div class="step-body">
+        <h4>Google Local Services Ads (LSAs)</h4>
+        <p>LSAs show above traditional search ads with the "Google Guaranteed" badge and charge per lead rather than per click. Cost per lead runs $29–$101 for home services. Most landscaping advertisers spend $500–$600/month on Google Ads. Once you have 20+ reviews and solid GBP optimization, LSAs will generate consistent inbound leads during peak season (March–June).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">9</div>
+      <div class="step-body">
+        <h4>Facebook/Instagram Ads — Seasonal Promotions</h4>
+        <p>At $25–$80 per lead with a 6% close rate, paid social works best for higher-ticket seasonal promotions — spring cleanup packages, xeriscape consultations, fall aeration specials. Target homeowners in specific Colorado Springs zip codes (80919, 80920, 80921 for Briargate/Flying Horse; 80906 for Broadmoor). Budget $150–$300/month per campaign.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">10</div>
+      <div class="step-body">
+        <h4>Email/SMS to Existing Clients</h4>
+        <p>Email marketing delivers $36–$40 for every $1 spent — the highest ROI of any marketing channel. Your existing client list is your most underutilized asset. Spring aeration reminders, fall cleanup specials, winter snow removal enrollment. A simple monthly email keeps you top of mind and converts to additional service bookings at near-zero acquisition cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The Brand Advantage:</strong> "Rent a Grandson" is one of the most memorable small business names in the landscaping space. Use it. Tell the story everywhere — the young entrepreneurs who bring the energy, reliability, and care of a grandson helping out. That story earns goodwill, referrals, and media attention that a generic "Green Thumb Lawn Care" never will.</p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 7: ROADMAP -->
+<section id="roadmap">
+<div class="container">
+  <div class="section-label">Section 07</div>
+  <h2>Launch Roadmap</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-phase">Pre-Launch (Now)</div>
+        <div class="tl-title">Foundation &amp; Legal</div>
+        <div class="tl-body">Register LLC in Colorado. Get liability insurance (essential — $500–$1,200/yr). Open business checking account. Purchase/lease equipment. Set up Google Business Profile. Build simple website. Create service packages and pricing sheet.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-phase">March–April 2026</div>
+        <div class="tl-title">Spring Launch — Land First 10 Clients</div>
+        <div class="tl-body">Drop door hangers in 2–3 target neighborhoods. Post on Nextdoor and neighborhood Facebook groups. Launch spring cleanup special. First 10 clients get personal thank-you texts and immediate review requests. Word of mouth starts here.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-phase">May–August 2026</div>
+        <div class="tl-title">Peak Season — Build to 25–30 Clients</div>
+        <div class="tl-body">Full mowing season. Weekly and biweekly contracts running. Begin upselling fertilization and weed control. Collect 20+ Google reviews. Start posting before/after content on Instagram. Lock in fall cleanup contracts early.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-phase">September–November 2026</div>
+        <div class="tl-title">Fall Push + Off-Season Planning</div>
+        <div class="tl-body">Fall cleanup surge (highest single-event revenue opportunity of the year). Aeration + overseeding packages. Begin offering snow removal contracts to existing clients (recurring winter revenue). Evaluate which clients to retain and grow for Year 2.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-phase">Year 2 (2027)</div>
+        <div class="tl-title">Scale — 40–50 Clients, Add Project Work</div>
+        <div class="tl-body">Renew seasonal contracts in February (lock in prior-year rates). Expand into mulch/rock install, xeriscape conversions, basic hardscaping. Consider a second employee. Target $90K–$120K in annual revenue. Begin running Google LSAs during peak season.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Key Metrics to Track</h3>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Year 1 Target</th>
+        <th>Year 2 Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Recurring Maintenance Clients</td>
+        <td class="price-anchor">25–40</td>
+        <td class="price-anchor">45–60</td>
+      </tr>
+      <tr>
+        <td>Google Reviews</td>
+        <td class="price-anchor">30+</td>
+        <td class="price-anchor">75+</td>
+      </tr>
+      <tr>
+        <td>Average Client Annual Value</td>
+        <td class="price-anchor">$1,500+</td>
+        <td class="price-anchor">$2,200+</td>
+      </tr>
+      <tr>
+        <td>Annual Revenue</td>
+        <td class="price-anchor">$40K–$75K</td>
+        <td class="price-anchor">$90K–$130K</td>
+      </tr>
+      <tr>
+        <td>Client Retention Rate</td>
+        <td class="price-anchor">70%+</td>
+        <td class="price-anchor">80%+</td>
+      </tr>
+      <tr>
+        <td>Revenue from Add-Ons</td>
+        <td class="price-anchor">20–30%</td>
+        <td class="price-anchor">35–45%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout-green">
+    <p><strong>Bottom Line:</strong> Colorado Springs is a strong market for a new landscaping business — growing fast, underserved in the mid-market reliability tier, and full of the exact demographic (older homeowners, military families, HOA neighborhoods) that Rent a Grandson is built to serve. The name and story give you an immediate differentiation that most operators can't buy. Nail the basics — show up, do great work, collect reviews — and this business builds itself through referrals within two seasons.</p>
+  </div>
+</div>
+</section>
+
+<footer class="report-footer">
+  <strong>Rent a Grandson LLC</strong> — Lawn &amp; Landscaping &nbsp;|&nbsp; Colorado Springs, CO &nbsp;|&nbsp; Est. 2026<br>
+  Market research compiled May 2026. Sources: IBISWorld, Mordor Intelligence, HomeBlue, LawnBySeason, ContractorBear, City of Colorado Springs, Norada Real Estate.
+</footer>
+
+</body>
+</html>
